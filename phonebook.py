@@ -82,29 +82,44 @@ while True:
             phonebook[Name]['email'] = Email
         print("Фильм был успешно добавлен в коллекцию!")
         
-    # elif command == "/correct":
-    #     Name = ''
-    #     Phones = []
-    #     Birthday = ''
-    #     Email = ''
+    elif command == "/correct":
+        Name = ''
+        Phones = []
+        Birthday = ''
+        Email = ''
         
-    #     Name = input("Введите имя контакта, который нужно откорректировать ")
-    #     if phonebook.get(f):
+        Name = input("Введите имя контакта, который нужно откорректировать ")
+        if phonebook.get(Name):
+            print("Какие данный вы хотели бы изменить, выберете соответствующую команду:")
+            print("Имя: /Name")
+            print("Телефон: /Phone")
+            print("Дату рождения: /Birthday")
+            print("Email: /Email")
+            print()
+            com = input("Введите команту: ")
             
+            if com == "/Name":
+                New_Name = input("Введите новое имя: ")
+                phonebook[New_Name] = phonebook.pop(Name)
+            elif com == "/Phone":
+                Phones.append(input("Введите новый телефон: "))
+                phonebook[Name]['phones'] = Phones
+            elif com == "/Birthday":
+                Birthday = input("Введите дату рождения: ")
+                phonebook[Name]['birthday'] = Birthday
+            elif com == "/Email":
+                Email = input("Введите Email: ")
+                phonebook[Name]['email'] = Email
             
-            
-    #         print("Контакт изменен")
-    #     else:
-    #         print("Такого контакта не существует")
-    
-           
-        
+            print("Контакт изменен")
+        else:
+            print("Такого контакта не существует")
+     
     elif command == "/help":     
         with open('Readme.md', encoding='utf-8') as f:
             text = f.read()
             print(text)
         
-    
     elif command == "/delet":
         f = input("Введите имя контакта, который нужно удалить ")
         try:
